@@ -19,10 +19,6 @@ This includes:
 Client → Pre-Signed URL → S3 (Raw Bucket) → Lambda Trigger → Processed Images (S3) → CRR
 ```
 
-![Architecture Diagram](./images/architecture.png)
-
----
-
 ## 1. S3 Setup
 
 ### Configuration Details
@@ -51,13 +47,7 @@ This setup provides:
 * Version control
 * Disaster recovery
 * Cost optimization
-
-### Visual Verification
-
-![S3 Setup](./images/s3-setup.png)
-
 ---
-
 ## 2. Lambda Processing Function
 
 ### Configuration Details
@@ -76,10 +66,6 @@ This setup provides:
 ### Explanation
 
 Automatically processes images whenever a new file is uploaded to the raw bucket.
-
-### Visual Verification
-
-![Lambda Function](./images/lambda-function.png)
 
 ---
 
@@ -100,10 +86,6 @@ zip -r pillow-layer.zip python
 
 This layer provides the **Pillow library** required for image processing.
 
-### Visual Verification
-
-![Lambda Layer](./images/lambda-layer.png)
-
 ---
 
 ## 4. IAM Permissions
@@ -121,10 +103,6 @@ These permissions allow Lambda to:
 * Read uploaded images
 * Process them
 * Write processed images back to S3
-
-### Visual Verification
-
-![IAM Role](./images/iam-role.png)
 
 ---
 
@@ -196,10 +174,6 @@ This Lambda function automatically:
 * Applies watermark
 * Uploads processed output
 
-### Visual Verification
-
-![Image Processing](./images/image-processing.png)
-
 ---
 
 ## 6. Pre-Signed URL Generator
@@ -240,10 +214,6 @@ def lambda_handler(event, context):
 
 Generates a temporary secure upload URL without exposing AWS credentials.
 
-### Visual Verification
-
-![Pre Signed URL](./images/presigned-url.png)
-
 ---
 
 ## 7. Testing
@@ -259,10 +229,6 @@ curl -X PUT -T test.jpg "PASTE_URL_HERE"
 * Image uploaded to raw bucket
 * Lambda triggered automatically
 * Processed image stored in processed bucket
-
-### Visual Verification
-
-![Testing Output](./images/testing.png)
 
 ---
 
@@ -280,10 +246,6 @@ Confirms:
 * Storage optimization
 * Replication
 * Disaster recovery readiness
-
-### Visual Verification
-
-![Storage Validation](./images/storage-validation.png)
 
 ---
 
